@@ -65,10 +65,10 @@
               <br>
             </label>
           </div>
-        <button type="submit" mat-raised-button color="primary">save</button>
+        <button type="submit" mat-raised-button color="primary" (click)="saveVideo()">save</button>
       </form>
     </div>
     <div div fxFlex="30%">
-        <app-video-player></app-video-player>
+        <app-video-player [videoUrl]="videoUrl"></app-video-player>
     </div>
 </div>

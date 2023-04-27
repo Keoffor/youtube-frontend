@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./video-player.component.css']
 })
 export class VideoPlayerComponent {
-
+  
+  @Input()
+ videoUrl!: string | '';
 }
