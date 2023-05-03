@@ -27,7 +27,8 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { AuthConfigModule } from './auth/auth-config.module';
-import {AuthInterceptor} from "angular-auth-oidc-client";
+import {AuthInterceptor, AuthModule} from "angular-auth-oidc-client";
+import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {AuthInterceptor} from "angular-auth-oidc-client";
     HeadersComponent,
     SaveVideoDetailsComponent,
     VideoPlayerComponent,
+    VideoDetailComponent,
 
   ],
   imports: [
@@ -61,10 +63,12 @@ import {AuthInterceptor} from "angular-auth-oidc-client";
     VgOverlayPlayModule,
     VgBufferingModule,
     MatSnackBarModule,
-    AuthConfigModule    
+    AuthConfigModule,
     
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

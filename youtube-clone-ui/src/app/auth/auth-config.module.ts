@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
-import { AuthModule } from 'angular-auth-oidc-client';
+import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 
 
 @NgModule({
-    imports: [AuthModule.forRoot({
-        config: {
-            authority: 'https://dev-tl60vt6pqdxntnvf.us.auth0.com',
-            redirectUrl: window.location.origin,
-            clientId: 'KjDAzLyT5bRWcJpp4YIaQpX1TfWITN7o',
-            scope: 'openid profile offline_access',
-            responseType: 'code',
-            silentRenew: true,
-            useRefreshToken: true,
-        }
-      })],
-    exports: [AuthModule],
+  imports: [AuthModule.forRoot({
+    config: {
+      authority: 'https://dev-tl60vt6pqdxntnvf.us.auth0.com',
+      redirectUrl: window.location.origin,
+      clientId: 'eBB6ZmnNvps4PCKODqlSDfULXJH2LaJL',
+      scope: 'openid profile offline_access email',
+      responseType: 'code',
+      silentRenew: true,
+      useRefreshToken: true,
+      secureRoutes: ['http://localhost:8080/'],
+      customParamsAuthRequest: {
+        audiences: 'http://localhost:8080/'
+      }
+    }
+  })],
+  providers: [],
+  exports: [AuthModule],
 })
-export class AuthConfigModule {}
+export class AuthConfigModule {
+}
