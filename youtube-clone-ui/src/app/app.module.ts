@@ -29,6 +29,10 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { AuthConfigModule } from './auth/auth-config.module';
 import {AuthInterceptor, AuthModule} from "angular-auth-oidc-client";
 import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { HomeComponent } from './home/home.component';
+import { HistoryComponent } from './history/history.component';
+import { LikedVideosComponent } from './liked-videos/liked-videos.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
     SaveVideoDetailsComponent,
     VideoPlayerComponent,
     VideoDetailComponent,
+    HomeComponent,
+    HistoryComponent,
+    LikedVideosComponent,
+    SidebarComponent,
 
   ],
   imports: [
