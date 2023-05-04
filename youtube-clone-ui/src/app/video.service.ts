@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UploadVideoResponse } from './upload-video/upload-video-response';
-import { VideoDto } from './video-dto-response';
+import { VideoDto } from './video-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,18 @@ export class VideoService {
       return this.httpClient.get<VideoDto>("http://localhost:8080/api/videos/"+videoId)
     }
     saveVideo(videoMetaData: VideoDto): Observable<VideoDto>{
-     return this.httpClient.put<VideoDto>("http://localhost:8080/api/videos/", videoMetaData);
+     return this.httpClient.put<VideoDto>("http://localhost:8080/api/videos/saved", videoMetaData);
     }
-}
+    getAllVideos(): Observable<Array<VideoDto>>{
+      return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos");
+    }
+
+    likedVideo(videoId: string): Observable<VideoDto>{
+      return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId +"/like", null);
+
+    }
+    dislikedVideo(videoId: string): Observable<VideoDto>{
+      return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId +"/dislike", null);
+
+    }
+  }

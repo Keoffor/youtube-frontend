@@ -18,7 +18,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import{MatOptionModule} from '@angular/material/core';
 import {MatInputModule} from "@angular/material/input";
-import {MatChipsModule} from "@angular/material/chips";
 import {MatListModule} from "@angular/material/list";
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
@@ -33,6 +32,15 @@ import { HomeComponent } from './home/home.component';
 import { HistoryComponent } from './history/history.component';
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { FeatureComponent } from './feature/feature.component';
+import { VideoCardComponent } from './video-card/video-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import { CallbackComponent } from './callback/callback.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +54,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HistoryComponent,
     LikedVideosComponent,
     SidebarComponent,
+    SubscriptionsComponent,
+    FeatureComponent,
+    VideoCardComponent,
+    CallbackComponent,
 
   ],
   imports: [
@@ -72,6 +84,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     VgBufferingModule,
     MatSnackBarModule,
     AuthConfigModule,
+    MatSidenavModule,
+    MatCardModule
     
   ],
   providers: [

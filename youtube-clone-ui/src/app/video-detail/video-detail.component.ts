@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-video-detail',
@@ -9,14 +11,17 @@ import { VideoService } from '../video.service';
 })
 
 
-export class VideoDetailComponent {
+export class VideoDetailComponent implements OnInit {
   videoId!: string;
   videoUrl!: string; 
   videoAvailable: boolean = false;
   tags: Array<string> = [];
   videoDescription!: string;
   title!: string;
-  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService){
+  likeCount: number =0;
+  dislikeCount: number = 0;
+  viewCount: number = 0;
+  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService){
   this.videoId = this.activatedRoute.snapshot.params['videoId'];
 
   this.videoService.getVideo(this.videoId).subscribe(data =>{
@@ -25,7 +30,32 @@ export class VideoDetailComponent {
     this.tags = data.tags;
     this.videoDescription =data.description;
     this.title = data.title;
+    this.likeCount= data.likeCount;
+    this.dislikeCount = data.disLikeCount;
+    this.viewCount = data.viewCount;
     })
 
+  }
+  ngOnInit(): void {
+      
+  }
+  likedvideo(){
+    this.videoService.likedVideo(this.videoId).subscribe(data =>{
+     this.likeCount = data.likeCount;
+     this.dislikeCount = data.disLikeCount;
+    });
+
+  }
+  dislikedvideo(){
+    this.videoService.dislikedVideo(this.videoId).subscribe(data =>{
+     this.likeCount = data.likeCount;
+     this.dislikeCount = data.disLikeCount;
+    });
+
+  }
+ 
+  subscribeToUser(){
+    let getUserId = this.userService.getUserId();
+    this.userService.subscribeToUser(getUserId);
   }
 }

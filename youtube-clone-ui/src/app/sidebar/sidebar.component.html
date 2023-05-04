@@ -1,1 +1,25 @@
-<p>sidebar works!</p>
+<mat-sidenav mode="side" opened class="matline">
+    <mat-nav-list  role="list">
+      <mat-list-item role="listitem" routerLink="/featured">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span matLine>Home</span>
+      </mat-list-item>
+  
+      <mat-list-item role="listitem" routerLink="/subscriptions">
+        <mat-icon mat-list-icon>subscriptions</mat-icon>
+        <span matLine>Subscriptions</span>
+      </mat-list-item>
+  
+      <mat-list-item role="listitem" routerLink="/history">
+        <mat-icon mat-list-icon>history</mat-icon>
+        <span matLine>History</span>
+      </mat-list-item>
+  
+    <mat-list-item role="listitem" routerLink="/liked-videos">
+      <mat-icon mat-list-icon>thumb_up</mat-icon>
+      <span matLine>Liked Videos</span>
+    </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+

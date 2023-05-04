@@ -5,7 +5,7 @@ import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { VideoDto } from '../video-dto-response';
+import { VideoDto } from '../video-dto';
 
 @Component({
   selector: 'app-save-video-details',
@@ -28,13 +28,14 @@ export class SaveVideoDetailsComponent{
   videoId ='';
   fileSelected = false;
   videoUrl!: string;
-  thumbnails!:string;
+  thumbnailurl!:string;
+
 
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private snackBar: MatSnackBar){
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.videoService.getVideo(this.videoId).subscribe(data =>{
     this.videoUrl = data.videourl;
-    this.thumbnails = data.thumbnailurl;
+    this.thumbnailurl = data.thumbnailurl;
     })
     this.saveVideoDetailsForm = new FormGroup({
    
@@ -76,7 +77,7 @@ export class SaveVideoDetailsComponent{
     .subscribe(data =>{
       console.log(data)
       //show an upload success notification
-      this.snackBar.open("Thumbnail upload successfully ", "Ok")
+      this.snackBar.open("Thumbnail upload successfully ", "Ok");
     })
   }
   saveVideo(){
@@ -86,13 +87,18 @@ export class SaveVideoDetailsComponent{
       "title": this.saveVideoDetailsForm.get('title')?.value,
       "description": this.saveVideoDetailsForm.get('description')?.value,
       "tags": this.tags,
-      "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
       "videourl": this.videoUrl,
-      "thumbnailurl": this.thumbnails
+      "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
+      "thumbnailurl": this.thumbnailurl,
+      "viewCount": 0,
+      "likeCount": 0,
+      "disLikeCount": 0
+     
+    
 
     }
     this.videoService.saveVideo(videoMetaData).subscribe(data =>{
-      this.snackBar.open("Video MetaData updated successfully", "Ok")
+      this.snackBar.open("Video MetaData updated successfully", "Ok");
     })
   }
 
