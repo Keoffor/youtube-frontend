@@ -21,6 +21,8 @@ export class VideoDetailComponent implements OnInit {
   likeCount: number =0;
   dislikeCount: number = 0;
   viewCount: number = 0;
+  showSubricbeButton: boolean = true;
+  showUnSubcribeButton: boolean = false;
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService){
   this.videoId = this.activatedRoute.snapshot.params['videoId'];
 
@@ -56,6 +58,20 @@ export class VideoDetailComponent implements OnInit {
  
   subscribeToUser(){
     let getUserId = this.userService.getUserId();
-    this.userService.subscribeToUser(getUserId);
+    this.userService.subscribeToUser(getUserId).subscribe(data =>{
+      this.showSubricbeButton =false;
+      this.showUnSubcribeButton = true;
+    });
+    
+    
+  }
+
+  unSubscribedToUser(){
+    let getUserId = this.userService.getUserId();
+    this.userService.unSubscribeToUser(getUserId).subscribe(data =>{
+      this.showSubricbeButton = true;
+      this.showUnSubcribeButton = false;
+    });
+   
   }
 }

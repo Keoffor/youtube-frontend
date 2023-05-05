@@ -11,10 +11,14 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   subscribeToUser(userId: string): Observable<boolean>{
-    return this.httpClient.post<boolean>("http://localhost:8080/api/user/subscribe/"+userId, null);
+    return this.httpClient.post<boolean>("http://localhost:8080/api/user/subscribe/"+ userId, null);
+  }
+
+  unSubscribeToUser(userId: string):Observable<boolean> {
+    return this.httpClient.post<boolean>("http://localhost:8080/api/user/unsubscribe/"+userId, null);
   }
   registerUser(){
-    this.httpClient.get<string>("http://localhost:8080/api/user/register").subscribe(data =>{
+    this.httpClient.get("http://localhost:8080/api/user/register", {responseType: "text"}).subscribe(data =>{
      return this.userId = data;
     })
   }
