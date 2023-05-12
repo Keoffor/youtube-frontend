@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  picture: string ='';
+  name: string = '';
   title = 'youtube-clone-ui';
-  constructor(private oidcSecurityService: OidcSecurityService) {
+  constructor(private oidcSecurityService: OidcSecurityService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -18,31 +20,11 @@ export class AppComponent implements OnInit {
         console.log('App is authenticated', isAuthenticated);
         console.log(userData);
     });
+
+    this.userService.registerUser().subscribe(data => {
+      this.picture = data.picture;
+ 
+    })
   }
 }
 
-// @Component({
-//   selector: 'my-app',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class AppComponent {
-
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit() {
-//     this.getTodos();
-//   }
-
-//   getTodos() {
-//     this.http.get('https://localhost:8080/todos', {
-//       headers: new Headers({
-//         'Authorization': 'Bearer ' + this.auth.getAccessToken()
-//       })
-//     }).subscribe(res => {
-//       console.log(res);
-//     }, err => {
-//       console.log(err);
-//     });
-//   }
-// }

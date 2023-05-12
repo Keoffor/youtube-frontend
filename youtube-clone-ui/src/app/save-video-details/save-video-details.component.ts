@@ -92,7 +92,7 @@ export class SaveVideoDetailsComponent{
       "thumbnailurl": this.thumbnailurl,
       "viewCount": 0,
       "likeCount": 0,
-      "disLikeCount": 0
+      "disLikeCount": 0,
      
     
 

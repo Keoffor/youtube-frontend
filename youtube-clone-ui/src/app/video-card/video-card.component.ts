@@ -8,8 +8,9 @@ import { VideoDto } from '../video-dto';
 })
 export class VideoCardComponent implements OnInit {
 
-  @Input()
-  video!: VideoDto;
+
+  @Input() video!: VideoDto;
+  @Input() viewCount: number = 0;
   ngOnInit(): void {
       
   }

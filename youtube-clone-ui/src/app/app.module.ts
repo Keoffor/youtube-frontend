@@ -39,7 +39,8 @@ import { VideoCardComponent } from './video-card/video-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import { CallbackComponent } from './callback/callback.component';
-
+import { CommentsComponent } from './comments/comments.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { CallbackComponent } from './callback/callback.component';
     FeatureComponent,
     VideoCardComponent,
     CallbackComponent,
+    CommentsComponent,
 
   ],
   imports: [
@@ -85,7 +87,8 @@ import { CallbackComponent } from './callback/callback.component';
     MatSnackBarModule,
     AuthConfigModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
     
   ],
   providers: [

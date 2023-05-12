@@ -1,3 +1,12 @@
+
 .example-spacer {
     flex: 1 1 auto;
   }
+  img {
+ border-radius: 50%;
+ width: 27px;
+ margin-top: 10px;
+ border: 2px solid #ddd;
+  
+  }
+ 

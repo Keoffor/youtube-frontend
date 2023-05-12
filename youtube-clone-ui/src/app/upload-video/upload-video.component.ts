@@ -50,7 +50,7 @@ this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formDa
         // It was a directory (empty directories are added, otherwise only files)
 const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
 console.log(droppedFile.relativePath, fileEntry);
-}
+      }
 }
 }
 
@@ -67,11 +67,13 @@ uploadVideo(){
       
       this.fileEntry.file(file => {
             this.videoService.uploadVideo(file).subscribe(data => {
-                  this.router.navigateByUrl("/save-video-details/videoId"+data.videoId)
+                  this.router.navigateByUrl("/save-video-details/"+data.videoId)
                 })
       })
  
  }
 }
+
+
 }
 

@@ -1,0 +1,52 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .example-header-image {
+    background-image: url('https://yt3.ggpht.com/ytc/AAUvwnjuYQrnTYr-sXVEBvCAmtT4nxF-3yhh5KnP0W6xmQ=s176-c-k-c0x00ffffff-no-rj');
+    background-size: cover;
+  }
+  
+  .mat-card-header {
+    padding-top: 15px;
+    
+  }
+  
+  .comment-author {
+    padding-top: 10px;
+    font-weight: lighter;
+    font-size: medium;
+    text-decoration: none;
+  }
+  
+  .delete-comment{
+    padding-bottom: 15px;
+  }
+  
+  .view-comments{
+    padding-top: 5px;
+    
+  }
+  .text{
+    color: rgb(52, 51, 51);
+    font-family:'Calibri', 'Gill Sans MT', Gill Sans, 'Trebuchet MS', sans-serif
+  }
+  img{
+    border-radius: 20px;
+    width: 30px;
+    margin-top: 10px;
+  }
+  .time{
+   color: rgb(120, 117, 117);
+   margin-top: 17px;
+   font-size: 0.75rem;
+   font-family:'Calibri', 'Gill Sans MT', Gill Sans, 'Trebuchet MS', sans-serif
+  }
+

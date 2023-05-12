@@ -1,11 +1,32 @@
-<mat-card class="example-card" routerLink="/video-detail/{{video.id}}">
-    <img mat-card-image [src]="video.thumbnailurl" alt="thumbnailurl">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{video.title}}</mat-card-title>
-      <mat-card-subtitle>Ken 007</mat-card-subtitle>
-      <mat-card-subtitle>1M views</mat-card-subtitle>
-    </mat-card-header>
-    
+
+
+<div class="thumb" >
+<mat-card class="example-card" routerLink="/video-detail/{{video.id}}" style="width: 21rem; border-radius: 0.5rem;">
+    <img mat-card-image [src]="video.thumbnailurl" alt="thumbnailurl"  style="width: 21rem; height: 12rem; ">    
   </mat-card>
-  
+  <mat-card-header >
+    <div mat-card-avatar class="example-header-image" ></div>
+    <mat-card-title class="title">{{video.title}}</mat-card-title>
+    <mat-card-subtitle class="name">Ken 007</mat-card-subtitle>
+    <mat-card-subtitle class="view">{{video.viewCount}} views</mat-card-subtitle>
+  </mat-card-header>
+</div>
+<!-- <html>
+  <head>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+     <body>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+     </body>
+</html> -->
+
+

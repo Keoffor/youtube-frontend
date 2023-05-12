@@ -7,23 +7,31 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-video-detail',
   templateUrl: './video-detail.component.html',
-  styleUrls: ['./video-detail.component.css']
+  styleUrls: ['./video-detail.component.css'],
+  template:`
+  <div>
+        <app-video-card [viewCount] = "viewCount"></app-video-card>
+        </div>
+  `,
 })
 
 
 export class VideoDetailComponent implements OnInit {
   videoId!: string;
   videoUrl!: string; 
+  getUserId: string = ''
+  getName: string = ''
   videoAvailable: boolean = false;
   tags: Array<string> = [];
   videoDescription!: string;
   title!: string;
   likeCount: number =0;
   dislikeCount: number = 0;
-  viewCount: number = 0;
+  viewCount: number=0;
   showSubricbeButton: boolean = true;
   showUnSubcribeButton: boolean = false;
-  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService){
+  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService, 
+  ){
   this.videoId = this.activatedRoute.snapshot.params['videoId'];
 
   this.videoService.getVideo(this.videoId).subscribe(data =>{
@@ -36,10 +44,14 @@ export class VideoDetailComponent implements OnInit {
     this.dislikeCount = data.disLikeCount;
     this.viewCount = data.viewCount;
     })
+    userService.registerUser().subscribe(data =>{
+      this.getUserId = data.id;
+      this.getName = data.name;
+    })
 
   }
   ngOnInit(): void {
-      
+    
   }
   likedvideo(){
     this.videoService.likedVideo(this.videoId).subscribe(data =>{
@@ -57,8 +69,7 @@ export class VideoDetailComponent implements OnInit {
   }
  
   subscribeToUser(){
-    let getUserId = this.userService.getUserId();
-    this.userService.subscribeToUser(getUserId).subscribe(data =>{
+    this.userService.subscribeToUser(this.getUserId).subscribe(data =>{
       this.showSubricbeButton =false;
       this.showUnSubcribeButton = true;
     });
@@ -67,8 +78,8 @@ export class VideoDetailComponent implements OnInit {
   }
 
   unSubscribedToUser(){
-    let getUserId = this.userService.getUserId();
-    this.userService.unSubscribeToUser(getUserId).subscribe(data =>{
+    let getUserId = this.userService.registerUser;
+    this.userService.unSubscribeToUser(this.getUserId).subscribe(data =>{
       this.showSubricbeButton = true;
       this.showUnSubcribeButton = false;
     });
