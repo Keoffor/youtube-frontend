@@ -2,8 +2,11 @@
     <mat-form-field class="example-full-width">
       <mat-label>Leave a comment</mat-label>
       <textarea matInput [formControlName]="'comment'"
-                placeholder="Share your thoughts"></textarea>
+                placeholder="Share your thoughts">
+    </textarea>
+    
     </mat-form-field>
+   
     <div fxLayout="row">
       <div fxFlex="60%"></div>
       <div fxFlex="40%" fxFlexAlign="end">
@@ -16,6 +19,7 @@
       </div>
     </div>
   </form>
+  
   <mat-divider></mat-divider>
   <div class="view-comments" *ngFor="let comments of commentDto" >
     <div fxLayout="row">
@@ -26,12 +30,14 @@
       <div fxFlex = "20%">   <a matCardTitle class="comment-author" routerLink="">{{comments.userName}}</a>
         <span class="text">{{comments.commentText}} </span>
       </div>
-      <div fxFlex="10%" class="time"><span matCardSubtitl >2weeks</span></div>
+      <div fxFlex="10%" class="time"><span matCardSubtitle >2weeks</span></div>
       <div fxFlex="50%" class="delete-comment" fxFlexAlign="end">
         <button mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>
-   
+
   </div>
+
+  

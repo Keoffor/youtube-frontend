@@ -13,7 +13,7 @@ export class CommentServiceService {
     
    
    }
-   postComment(commentDto: any, videoId: string): Observable<UserResponse>{
+   postComment(commentDto: CommentDto, videoId: string): Observable<UserResponse>{
      return this.httpClient.post<UserResponse>("http://localhost:8080/api/videos/"+videoId+"/comment", commentDto); 
    }
    getAllComments(videoId: string): Observable<Array<CommentDto>>{

@@ -4,7 +4,6 @@ import { UserService } from '../user.service';
 import { CommentServiceService } from '../comment-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommentDto } from '../commentDto';
-import { UserCommentInfo } from '../UserCommentInfo';
 
 @Component({
   selector: 'app-comments',
@@ -14,6 +13,7 @@ import { UserCommentInfo } from '../UserCommentInfo';
 export class CommentsComponent implements OnInit  {
 
   @Input() videoId: string = '';
+  id: string = '';
   commentDto: CommentDto[]= [];
   commentForm: FormGroup;
   picture: string = '';
@@ -26,13 +26,17 @@ export class CommentsComponent implements OnInit  {
   }
   ngOnInit(): void {
   this.getComments();
+  this.userService.registerUser().subscribe(data=>{
+    this.id = data.id;});
   }
 
   postComment(){
+
+    
     
     const commentDto: CommentDto = {
       "commentText": this.commentForm.get('comment')?.value,
-      "authorId": this.userService.getUserId(),
+      "authorId": this.id,
       "userName": this.name,
       "picture": this.picture
     }
@@ -41,9 +45,10 @@ export class CommentsComponent implements OnInit  {
       this.picture = data.picture;
       this.name = data.name;
       this.commentForm.get('comment')?.reset();
+      this.getComments();
     })
     
-    this.getComments();
+    
   }
   getComments(){
     this.commentService.getAllComments(this.videoId).subscribe(data =>{

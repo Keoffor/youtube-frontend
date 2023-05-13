@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class CallbackComponent implements OnInit {
   name: string='';
   picture: string='';
-  id: string='';
+  id: string ='';
   constructor(private userService: UserService, private router: Router){
  
     this.userService.registerUser().subscribe(data =>{

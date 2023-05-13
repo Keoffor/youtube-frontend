@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
 import { UserService } from '../user.service';
@@ -30,6 +30,7 @@ export class VideoDetailComponent implements OnInit {
   viewCount: number=0;
   showSubricbeButton: boolean = true;
   showUnSubcribeButton: boolean = false;
+  @Input() id: string ='';
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService, 
   ){
   this.videoId = this.activatedRoute.snapshot.params['videoId'];
