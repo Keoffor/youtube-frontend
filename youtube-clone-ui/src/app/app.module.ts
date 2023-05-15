@@ -15,7 +15,7 @@ import { HeadersComponent } from './headers/headers.component';
 import {MatIconModule} from '@angular/material/icon';
 import { SaveVideoDetailsComponent } from './save-video-details/save-video-details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import{MatOptionModule} from '@angular/material/core';
 import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
@@ -41,6 +41,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { CallbackComponent } from './callback/callback.component';
 import { CommentsComponent } from './comments/comments.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {MatMenuModule} from '@angular/material/menu';
     VideoCardComponent,
     CallbackComponent,
     CommentsComponent,
+    SearchComponent,
 
   ],
   imports: [
@@ -92,7 +94,9 @@ import {MatMenuModule} from '@angular/material/menu';
     
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    
   ],
   bootstrap: [AppComponent]
 })
