@@ -9,6 +9,6 @@ export class CallingbackService {
   constructor(private http: HttpClient) { }
 
   makeCalls(){
-    this.http.get("http://localhost:4200/callback");
+    this.http.get("https://utube.kendoc.vip/callback");
   }
 }

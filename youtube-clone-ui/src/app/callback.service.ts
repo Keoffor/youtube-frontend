@@ -13,6 +13,6 @@ export class CallbackService {
 
 getcallbacks(){
 
- this.httpClient.get("http://localhost:4200/callback");
+ this.httpClient.get("http://a16231bb3de3548789740402bc3cffbe-2113718577.us-east-1.elb.amazonaws.com:4200/callback");
 }
 }

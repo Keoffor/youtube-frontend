@@ -6,15 +6,15 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
   imports: [AuthModule.forRoot({
     config: {
       authority: 'https://dev-tl60vt6pqdxntnvf.us.auth0.com',
-      redirectUrl: "http://localhost:4200/callback",
+      redirectUrl: "https://utube.kendoc.vip/callback",
       clientId: 'eBB6ZmnNvps4PCKODqlSDfULXJH2LaJL',
       scope: 'openid profile offline_access email',
       responseType: 'code',
       silentRenew: true,
       useRefreshToken: true,
-      secureRoutes: ['http://localhost:8080/'],
+      secureRoutes: ['https://utube.kendoc.vip/api/'],
       customParamsAuthRequest: {
-        audiences: 'http://localhost:8080/'
+        audiences: 'https://utube.kendoc.vip/api/'
       }
     }
   })],

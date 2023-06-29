@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-deployment
+  template:
+    metadata:
+      labels:
+        app: frontend-deployment
+    spec:
+      containers:
+        - name: mytube-frontend-app
+          image: keoffor/mytube-frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - name: frontend-port
+              containerPort: 80
+      nodeSelector:
+        zone: us-east-1b

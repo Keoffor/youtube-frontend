@@ -1,11 +1,9 @@
  input.search{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding-left: 5px; 
     font-family: 'Calibri', 'Gill Sans MT', Gill Sans, 'Trebuchet MS', sans-serif;
     font-weight:lighter;
     caret-color: white;
-
-    
 }
 
 ::ng-deep mat-form-field{
@@ -14,7 +12,6 @@
     width: 25rem;
     border: 1px solid white;
     height: 5rem;
-    
   }
 
   .mat-icon-button {

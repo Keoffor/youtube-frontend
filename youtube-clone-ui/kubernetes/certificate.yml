@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: frontendcert
+  namespace: frontend
+spec:
+  secretName: frontend
+  issuerRef:
+    name: frontendissuer
+    kind: ClusterIssuer
+  commonName: utube.kendoc.vip
+  dnsNames:
+    - utube.kendoc.vip

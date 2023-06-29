@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VideoService } from '../video.service';
 import { VideoDto } from '../video-dto';
-import { CallbackService } from 'angular-auth-oidc-client/lib/callback/callback.service';
 
 @Component({
   selector: 'app-feature',

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UploadVideoResponse } from './upload-video/upload-video-response';
 import { VideoDto } from './video-dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { VideoDto } from './video-dto';
 export class VideoService {
 
   constructor(private httpClient: HttpClient ) { }
+ 
+  baseUrl = environment.BACKEND_CLOUD_URI;
 
   uploadVideo(fileEntry: File): Observable<UploadVideoResponse> {
 
@@ -17,7 +20,7 @@ export class VideoService {
   formData.append('file', fileEntry, fileEntry.name)
 
     //Http post call to upload video
-   return this.httpClient.post<UploadVideoResponse>("http://localhost:8080/api/videos", formData);
+   return this.httpClient.post<UploadVideoResponse>(this.baseUrl+"/api/videos", formData);
    
   }
 
@@ -28,28 +31,28 @@ export class VideoService {
     formData.append('videoId',videoId);
   
       //Http post call to upload thumbnails
-     return this.httpClient.post("http://localhost:8080/api/videos/thumbnail", formData, {
+     return this.httpClient.post(this.baseUrl+"/api/videos/thumbnail", formData, {
       responseType: 'text'
   });
      
     }
 
     getVideo(videoId: string): Observable<VideoDto>{
-      return this.httpClient.get<VideoDto>("http://localhost:8080/api/videos/"+videoId)
+      return this.httpClient.get<VideoDto>(this.baseUrl+"/api/videos/"+videoId)
     }
     saveVideo(videoMetaData: VideoDto): Observable<VideoDto>{
-     return this.httpClient.put<VideoDto>("http://localhost:8080/api/videos/saved", videoMetaData);
+     return this.httpClient.put<VideoDto>(this.baseUrl+"/api/videos/saved", videoMetaData);
     }
     getAllVideos(): Observable<Array<VideoDto>>{
-      return this.httpClient.get<Array<VideoDto>>("http://localhost:8080/api/videos");
+      return this.httpClient.get<Array<VideoDto>>(this.baseUrl+"/api/videos");
     }
 
     likedVideo(videoId: string): Observable<VideoDto>{
-      return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId +"/like", null);
+      return this.httpClient.post<VideoDto>(this.baseUrl+"/api/videos/"+ videoId +"/like", null);
 
     }
     dislikedVideo(videoId: string): Observable<VideoDto>{
-      return this.httpClient.post<VideoDto>("http://localhost:8080/api/videos/"+ videoId +"/dislike", null);
+      return this.httpClient.post<VideoDto>(this.baseUrl+"/api/videos/"+ videoId +"/dislike", null);
 
     }
   }

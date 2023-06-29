@@ -1,8 +1,9 @@
-<form class="example-form" [formGroup]="commentForm" >
+<div style="margin-top: 2rem;">
+  <form class="example-form" [formGroup]="commentForm" >
     <mat-form-field class="example-full-width">
       <mat-label>Leave a comment</mat-label>
       <textarea matInput [formControlName]="'comment'"
-                placeholder="Share your thoughts">
+                placeholder="Share your thoughts" style="color: black; background-color: rgb(207, 207, 207); border-radius: 5px;">
     </textarea>
     
     </mat-form-field>
@@ -22,15 +23,15 @@
   
   <mat-divider></mat-divider>
   <div class="view-comments" *ngFor="let comments of commentDto" >
-    <div fxLayout="row">
+    <div fxLayout="row" >
       <div fxFlex="5%">
       
         <img src ="{{comments.picture}}"/> 
       </div >
-      <div fxFlex = "20%">   <a matCardTitle class="comment-author" routerLink="">{{comments.userName}}</a>
+      <div  fxFlex = "20%">   <a matCardTitle class="comment-author" routerLink="">{{comments.userName}}</a>
         <span class="text">{{comments.commentText}} </span>
       </div>
-      <div fxFlex="10%" class="time"><span matCardSubtitle >2weeks</span></div>
+      <div fxFlex="10%" class="time"><span matCardSubtitle style="color: rgb(81, 79, 79);">2weeks</span></div>
       <div fxFlex="50%" class="delete-comment" fxFlexAlign="end">
         <button mat-icon-button>
           <mat-icon>delete</mat-icon>
@@ -39,5 +40,6 @@
     </div>
 
   </div>
+</div>
 
   
