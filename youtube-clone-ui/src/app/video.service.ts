@@ -20,7 +20,7 @@ export class VideoService {
   formData.append('file', fileEntry, fileEntry.name)
 
     //Http post call to upload video
-   return this.httpClient.post<UploadVideoResponse>(this.baseUrl+"/api/videos", formData);
+   return this.httpClient.post<UploadVideoResponse>(this.baseUrl+"/api/videos/upload", formData);
    
   }
 

@@ -10,4 +10,3 @@ spec:
     port: 80
     targetPort: frontend-port
     protocol: TCP
-  type: NodePort

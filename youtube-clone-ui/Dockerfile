@@ -18,6 +18,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist/youtube-clone-ui/ /usr/share/nginx/html
 
 # Copy the Nginx configuration from host to the specified location in the container
+RUN rm /etc/nginx/conf.d/default.conf
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]

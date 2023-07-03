@@ -12,9 +12,9 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
       responseType: 'code',
       silentRenew: true,
       useRefreshToken: true,
-      secureRoutes: ['https://utube.kendoc.vip/api/'],
+      secureRoutes: ['https://utube.kendoc.vip/'],
       customParamsAuthRequest: {
-        audiences: 'https://utube.kendoc.vip/api/'
+        audiences: 'https://utube.kendoc.vip/'
       }
     }
   })],
